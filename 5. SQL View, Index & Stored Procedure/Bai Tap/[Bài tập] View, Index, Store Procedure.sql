@@ -15,7 +15,7 @@ CREATE TABLE Products (
 );
 -- Tạo Unique Index trên bảng Products (sử dụng cột productCode để tạo chỉ mục)
 create unique index product_code
-on Products(productCode,productPrice);
+on Products(productCode);
 
 -- Tạo Composite Index trên bảng Products (sử dụng 2 cột productName và productPrice)
 create unique index compositeIndexProductPrice
@@ -72,8 +72,37 @@ insert into Products(Id,productCode,productName,productPrice,productAmount,produ
 value(Id,productCode,productName,productPrice,productAmount,productDescription,productStatus);
 end; //
 delimiter ;
+
 call addProduct('9','SP09','Keo','3USD','10','TrungQuoc','Available');
 
 -- Tạo store procedure sửa thông tin sản phẩm theo id
+delimiter //
+CREATE PROCEDURE update_all(product_id INT, product_code VARCHAR(50), product_name VARCHAR(50),
+				product_price INT, product_amount INT, product_description VARCHAR(50),
+				product_status VARCHAR(50) )
+	BEGIN 
+    UPDATE demo.products
+    SET 
+    productCode = product_code,
+    productName = product_name,
+    productPrice = product_price,
+    productAmount = product_amount,
+    productDescription = product_description,
+    productStatus = product_status
+    WHERE id = product_id;
+    END; //
+delimiter ;
+
+call addProduct('9','SP09','Keo','3USD','10','TrungQuoc','Available');
 
 -- Tạo store procedure xoá sản phẩm theo id
+
+delimiter //
+CREATE PROCEDURE deleteall(xoa_id INT)
+BEGIN
+	DELETE FROM products
+    WHERE id = xoa_id;
+END; //
+delimiter ;
+
+CALL deleteall(4);
