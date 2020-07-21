@@ -1,0 +1,21 @@
+header {
+    position: fixed;
+}
+
+header input {
+    position: absolute;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    border-radius: 8px;
+    border: solid grey 0.1px;
+}
+header div {
+    margin-top: -45px;
+    margin-left: 250px;
+    display: inline;
+}
+
+header div a {
+    margin-left: 50px;
+}
