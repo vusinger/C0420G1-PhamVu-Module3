@@ -1,14 +1,9 @@
-<<<<<<< HEAD
 body {
     position: relative;
 }
 header {
     position: fixed;
     top: 10px;
-=======
-header {
-    position: fixed;
->>>>>>> 08d4820d87067f4ca6dad2b5caa872d773368d22
 }
 
 header input {
@@ -19,7 +14,6 @@ header input {
     border-radius: 8px;
     border: solid grey 0.1px;
 }
-<<<<<<< HEAD
 header .div1 {
     margin-top: -40px;
     margin-left: 300px;
@@ -44,14 +38,4 @@ section {
     width: 60%;
     margin-top: 100px;
     margin-left: 20%;
-=======
-header div {
-    margin-top: -45px;
-    margin-left: 250px;
-    display: inline;
-}
-
-header div a {
-    margin-left: 50px;
->>>>>>> 08d4820d87067f4ca6dad2b5caa872d773368d22
 }
