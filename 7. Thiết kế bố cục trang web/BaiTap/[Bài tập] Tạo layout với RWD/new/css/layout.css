@@ -1,0 +1,53 @@
+.navbar {
+    width: 98%;
+    background-color: black;
+    padding-bottom: 50px;
+}
+.navbar .the_a {
+    float: left;
+}
+.navbar .the_a img{
+    float: left;
+    margin: 5px;
+}
+.navbar .the_a a{
+    float: left;
+}
+
+
+.navbar a{
+    padding: 16px;
+    text-decoration: none;
+}
+.navbar .the_a a:hover {
+    background-color: aqua;
+}
+
+.navbar .dropdown a:hover {
+    background-color: aqua;
+}
+
+.navbar .dropdown {
+    float: left;
+    margin-top: 16.4px;
+}
+
+.navbar .login_icon {
+    float: right;
+    margin-top: 10px;
+}
+
+.navbar .login_icon a:hover {
+}
+
+.dropdown-content {
+    background-color: aqua;
+    display: none;
+    position: absolute;
+    margin-top: 15px;
+    z-index: 2;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

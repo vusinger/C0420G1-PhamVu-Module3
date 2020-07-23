@@ -67,6 +67,9 @@
 .dropbtn:hover .dropdown-content {
     display: block;
 }
+.dropdown:hover .dropbtn{
+    padding-bottom: 0;
+}
 
 /* Create three equal columns that floats next to each other */
 .column {
