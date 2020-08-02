@@ -24,14 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="795044d3-8ec9-40bb-83ac-bf6f745be4a9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../Kien Thuc Chung/Jsevelet/Jservlet Kien Thuc Tong Hop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/P_Discount_Calculator_App_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/P_Discount_Calculator_App_war_exploded/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/P_Discount_Calculator_App_war_exploded/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/P_Discount_Calculator_App_war_exploded/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Kien Thuc Chung/PhanMemSQL/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Kien Thuc Chung/PhanMemSQL/.idea/vcs.xml" afterDir="false" />
-    </list>
+    <list default="true" id="795044d3-8ec9-40bb-83ac-bf6f745be4a9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,6 +154,7 @@
       <workItem from="1595642818132" duration="2272000" />
       <workItem from="1595689197745" duration="365000" />
       <workItem from="1595821150319" duration="8000" />
+      <workItem from="1596352433611" duration="703000" />
     </task>
     <servers />
   </component>
