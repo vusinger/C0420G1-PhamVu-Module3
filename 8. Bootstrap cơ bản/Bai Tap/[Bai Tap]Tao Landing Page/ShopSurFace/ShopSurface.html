@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Landing</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="bootstrap/jquery-3.2.1.slim.min.js"></script>
+    <script src="bootstrap/popper.min.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <style>
+        .nav-link:hover, .navbar-brand:hover {
+            text-decoration: underline;
+        }
+
+        .fa-search {
+            transform: scaleX(-1);
+        }
+
+        .bg {
+            background-image: url("images/Surface_Home_Hero_store_headphones_Aug_20_V1.jpg");
+            height: 720px;
+        }
+
+        .bg-text {
+            margin-top: 200px;
+        }
+
+        .btn-show {
+            border: dotted;
+        }
+    </style>
+</head>
+<body>
+<!---------------------------------------------NavBar--------------------------------------------->
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
+            <a class="navbar-brand mb-1" href="#"><img src="images/LogoMicrosoft.png" height="30" width="150"/></a>
+            <a class="navbar-brand" href="#"><h4>Surface</h4></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Computer
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <dl class="dropdown-item">
+                                <dt>2-IN-1'S</dt>
+                                <dd>
+                                    <img src="images/Computer-icon.png" height="80" width="80"/>
+                                    <button class="btn mr-5 text-warning " type="submit">NEW <br><a
+                                            href="https://www.microsoft.com/en-us/p/surface-go-2/8pt3s2vjmdr6">Surface
+                                        Go 2</a>
+                                    </button>
+                                </dd>
+                                <dd>
+                                    <img src="images/RE4Afz2.png" height="80" width="80"/>
+                                    <button class="btn mr-5 text-warning " type="submit">NEW <br><a
+                                            href="https://www.microsoft.com/en-us/p/surface-go-2/8pt3s2vjmdr6">Surface
+                                        Pro 7</a>
+                                    </button>
+                                </dd>
+                                <dd>
+                                    <img src="images/RE4Afz3.png" height="80" width="80"/>
+                                    <button class="btn mr-5 text-warning " type="submit">NEW <br><a
+                                            href="https://www.microsoft.com/en-us/p/surface-go-2/8pt3s2vjmdr6">Surface
+                                        Pro X</a>
+                                    </button>
+                                    </span>
+                                </dd>
+                            </dl>
+
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Accessories
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">For bussiness</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Shop now
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Support</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-3 my-lg-0">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    All Microsoft
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <a class="nav-link disabled" href="#">Search <i class="fa fa-search"></i></a>
+                    <a class="nav-link disabled" href="#">Cart <i class="fa fa-shopping-cart"></i></a>
+                    <button class="btn mr-5 " type="submit">Sign in<i class="fa fa-user-circle-o"></i></button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+    <!---------------------------------------------NavBar--------------------------------------------->
+
+    <div class="row bg">
+        <div class="col-8">
+        </div>
+        <div class="col-4 bg-text">
+            <div>
+                <h1 class="">Get started with confidence</h1>
+                <p class="">Work smart and be productive with hardware and software
+                    designed to help you stay connected and get things done the way you want to.</p>
+                <div class=""><a href="#"><span
+                        style="font-size: large;font-weight: bold;color: #005cbf">Explore > </span></a></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+        </div>
+        <div class="col-6">
+            <button class="btn ml-5 mt-5 btn-show" type="submit">
+                <img src="images/SurfaceHome_Lg_LinkNav_Panel_2_image1.svg" height="40" width="31">
+                <p style="font-weight: bold">COMPARE DEVICES</p>
+            </button>
+            <button class="btn ml-5 mt-5 btn-show" type="submit">
+                <img src="images/SurfaceHome_Lg_LinkNav_Panel_2_image2.svg" height="40" width="31">
+                <p style="font-weight: bold">COMPARE DEVICES</p>
+            </button>
+            <button class="btn ml-5 mt-5 btn-show" type="submit">
+                <img src="images/SurfaceHome_Lg_LinkNav_Panel_2_image3_new.svg" height="40" width="31">
+                <p style="font-weight: bold">COMPARE DEVICES</p>
+            </button>
+            <button class="btn ml-5 mt-5 btn-show" type="submit">
+                <img src="images/SurfaceHome_Lg_LinkNav_Panel_2_image4.svg" height="40" width="31">
+                <p style="font-weight: bold">COMPARE DEVICES</p>
+            </button>
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+</body>
+</html>
