@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="CustomerManagementCodeGym">
+    <output-path>$PROJECT_DIR$/out/artifacts/CustomerManagementCodeGym</output-path>
+    <root id="root">
+      <element id="archive" name="CustomerManagementCodeGym.jar">
+        <element id="module-output" name="CustomerManagementCodeGym" />
+      </element>
+    </root>
+  </artifact>
+</component>
