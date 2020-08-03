@@ -2,16 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Customer List</title>
+    <title>Products List</title>
 </head>
 <body>
-<h1>Customers</h1>
+<h1>Products</h1>
 <p>
     <a href="/products?action=create">Create new product</a>
 </p>
 <table border="1">
     <tr>
-        <th>Name</th>
+        <th>Product Name</th>
         <th>Price</th>
         <th>Description</th>
         <th>Maker</th>
