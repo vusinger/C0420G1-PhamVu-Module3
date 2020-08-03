@@ -10,6 +10,7 @@ import java.util.Map;
 public class ProductServiceImpl implements ProductService{
 
     private static Map<Integer, Product> products;
+    private static int id = 0;
 
     static {
         products = new HashMap<>();
@@ -20,22 +21,24 @@ public class ProductServiceImpl implements ProductService{
         products.put(5,new Product(5,"Kem Danh Rang","2$","Kem Mui Trai Cay","Han Quoc"));
         products.put(6,new Product(6,"Thuoc Tay","4$","Thuoc Tay Toilet","Nhat ban"));
         products.put(7,new Product(7,"Cay Lau Nha","9$","Cay Lau Nha Nhua Cao Cap","Philippin"));
+        id = 7;
     }
 
 
     @Override
     public List<Product> findAll() {
-        return new ArrayList<>(products.values());
+        List<Product> list = new ArrayList<>(products.values());
+        return list;
     }
 
     @Override
     public void save(Product product) {
-
+        products.put(product.getProductId(),product);
     }
 
     @Override
     public Product findById(int id) {
-        return null;
+        return products.get(id);
     }
 
     @Override
@@ -45,6 +48,12 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public void remove(int id) {
+        products.remove(id);
+    }
 
+    @Override
+    public int nextId() {
+        id++;
+        return id;
     }
 }

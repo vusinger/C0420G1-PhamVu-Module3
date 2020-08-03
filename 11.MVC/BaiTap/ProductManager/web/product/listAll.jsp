@@ -7,7 +7,7 @@
 <body>
 <h1>Customers</h1>
 <p>
-    <a href="/product?action=create">Create new product</a>
+    <a href="/products?action=create">Create new product</a>
 </p>
 <table border="1">
     <tr>
@@ -24,8 +24,8 @@
             <td>${product.price}</td>
             <td>${product.desc}</td>
             <td>${product.maker}</td>
-            <td><a href="/customers?action=edit&id=${product.productId}">edit</a></td>
-            <td><a href="/customers?action=delete&id=${customer.productId}">delete</a></td>
+            <td><a href="/products?action=edit&id=${product.productId}">edit</a></td>
+            <td><a href="/products?action=delete&id=${product.productId}">delete</a></td>
         </tr>
     </c:forEach>
 </table>
