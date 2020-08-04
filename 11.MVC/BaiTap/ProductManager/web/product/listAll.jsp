@@ -12,7 +12,7 @@
 <p>
     <form action="/products" method="post">
         <p>Search Product :</p><input type="text" name="search">
-        <input type="submit">
+        <input type="submit" value="search">
     </form>
 </p>
 
