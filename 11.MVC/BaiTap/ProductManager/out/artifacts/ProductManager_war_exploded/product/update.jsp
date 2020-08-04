@@ -13,6 +13,16 @@
 <p>
     <a href="/products">Back to product list</a>
 </p>
+<p>
+    <%
+        if ( request.getAttribute("invalidProductName")==null) {
+        } else if ( request.getAttribute("invalidProductName").equals("invalid")){
+            out.print("ProductName First Letter must UpperCase");
+        } else if ( request.getAttribute("invalidProductName").equals("valid")){
+            out.print("Congratulation you create successfully product ");
+        }
+    %>
+</p>
 <form method="post">
     <fieldset>
         <legend>Product Information</legend>
