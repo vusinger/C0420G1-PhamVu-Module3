@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", urlPatterns = "/products")
@@ -25,6 +26,10 @@ public class ProductServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
+        }
+        String search = request.getParameter("search");
+        if (search!=null) {
+            showSearchProduct(request,response);
         }
         switch (action) {
             case "create":
@@ -119,6 +124,25 @@ public class ProductServlet extends HttpServlet {
         int productId = Integer.parseInt(request.getParameter("id"));
         request.setAttribute("products",this.productDao.findById(productId));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/view.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showSearchProduct(HttpServletRequest request, HttpServletResponse response) {
+        String searchName = request.getParameter("search");
+        List<String> searchProduct = new ArrayList<>();
+        for (Product product: this.productDao.findAll()) {
+            if (product.getProductName().toLowerCase().contains(searchName.toLowerCase())) {
+                searchProduct.add(product.getProductName());
+            }
+        }
+        request.setAttribute("searchProduct",searchProduct);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/search.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {

@@ -9,6 +9,13 @@
 <p>
     <a href="/products?action=create">Create new product</a>
 </p>
+<p>
+    <form action="/products" method="post">
+        <p>Search Product :</p><input type="text" name="search">
+        <input type="submit">
+    </form>
+</p>
+
 <table border="1">
     <tr>
         <th>Product Name</th>
