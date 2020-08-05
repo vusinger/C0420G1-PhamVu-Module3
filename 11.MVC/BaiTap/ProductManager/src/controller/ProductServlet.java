@@ -135,14 +135,15 @@ public class ProductServlet extends HttpServlet {
 
     private void showSearchProduct(HttpServletRequest request, HttpServletResponse response) {
         String searchName = request.getParameter("search");
-        List<String> searchProduct = new ArrayList<>();
+        List<Product> searchProduct = new ArrayList<>();
         for (Product product: this.productDao.findAll()) {
             if (product.getProductName().toLowerCase().contains(searchName.toLowerCase())) {
-                searchProduct.add(product.getProductName());
+                searchProduct.add(product);
             }
         }
-        request.setAttribute("searchProduct",searchProduct);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("product/search.jsp");
+
+        request.setAttribute("products",searchProduct);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/product/listAll.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
