@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements IUserDAO {
-
+    public static void main(String[] args) {
+        System.out.println();
+    }
     private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "1234";
