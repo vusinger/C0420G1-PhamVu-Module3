@@ -18,7 +18,7 @@
 
         <div class="col-md-4">
             <form action="/login" method="post">
-                <h1>Thêm mới ghi chú</h1>
+                <h3>Thêm mới ghi chú</h3>
                 <div class="form-group">
                     <label>Tiêu Đề</label>
                     <input type="text" class="form-control" name="title" placeholder="Tiêu Đề">

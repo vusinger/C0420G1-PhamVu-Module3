@@ -5,6 +5,6 @@
     <title>$Title$</title>
   </head>
   <body>
-    <c:redirect url="frontend/NoteApp.jsp"/>
+    <c:redirect url="frontend/Note.jsp"/>
   </body>
 </html>
