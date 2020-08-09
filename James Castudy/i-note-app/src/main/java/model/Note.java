@@ -1,16 +1,18 @@
 package model;
 
 public class Note {
-    private int typeId;
+    private int Id;
     private String title;
     private String content;
+    private int typeId;
+    private Boolean flag = true;
 
-    public int getTypeId() {
-        return typeId;
+    public int getId() {
+        return Id;
     }
 
-    public void setTypeId(int typeId) {
-        this.typeId = typeId;
+    public void setId(int id) {
+        Id = id;
     }
 
     public String getTitle() {
@@ -27,5 +29,21 @@ public class Note {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public Boolean getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Boolean flag) {
+        this.flag = flag;
     }
 }
