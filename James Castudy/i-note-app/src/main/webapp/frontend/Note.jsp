@@ -4,12 +4,13 @@
 <head>
     <title>Note</title>
     <link rel="stylesheet" href="../frontend/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../frontend/css/mycss.css">
     <script src="../frontend/js/popper.min.js"></script>
     <script src="../frontend/js/jquery-3.2.1.slim.min.js"></script>
     <script src="../frontend/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../frontend/css/NoteCss.css">
 </head>
-<body>
+<body class="container-fluid bg" style="background-image: url('../frontend/img/background.jpg')">
 <br><br><br><br><br>
 <div class="coupon">
     <div class="container">

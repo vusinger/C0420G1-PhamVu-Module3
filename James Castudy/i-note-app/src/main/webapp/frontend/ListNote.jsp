@@ -11,21 +11,21 @@
     <script src="../frontend/js/bootstrap.min.js"></script>
     <script src="../frontend/js/noteAppJs.js"></script>
 </head>
-<body style="background-image: url('../frontend/img/v2osk-1Z2niiBPg5A-unsplash.jpg');">
-<br><br>
-<div class="container">
+<body>
+<div class="container-fluid bg" style="background-image: url('../frontend/img/background.jpg')">
+    <br><br>
     <%--    row--%>
     <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            <h1 class="d-flex justify-content-center">Thêm mới ghi chú</h1>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="d-flex justify-content-center mr-5">Thêm mới ghi chú</h1>
             <br><br>
             <form id="myform"><input type="text" name="selectValue" id="selectValue" style="display: none"></form>
             <form class="form-inline">
                 <div class="input-group mb-2 mr-sm-2">
                     <a class="btn btn-primary" href="/ListNote?action=create">Create New Note</a>
                 </div>
-                <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group mb-2 mr-sm-2 ml-3">
                     <select class="input-group custom-select" id="selectCustom" onchange="sendRequest()">
                         <option selected>Thể Loại</option>
                         <c:forEach items="${requestScope.ListType}" var="type">
@@ -38,9 +38,9 @@
                         </c:forEach>
                     </select>
                 </div>
-                <div class="input-group mb-2 mr-sm-2 " style="width: 350px">
+                <div class="input-group mb-2 mr-sm-2 ml-3 w-50" style="width: 350px">
                     <form method="get">
-                        <input type="text" name="search" class="form-control w-70 ml-2" placeholder="Search...">
+                        <input type="text" name="search" class="form-control" placeholder="Search...">
                         <button class="btn btn-primary ml-3">Search</button>
                     </form>
                 </div>
@@ -105,7 +105,7 @@
             </table>
         </div>
 
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
 
     </div>
     <%--    row--%>

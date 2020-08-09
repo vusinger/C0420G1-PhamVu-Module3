@@ -5,21 +5,21 @@
 <head>
     <title>NoteApp</title>
     <link rel="stylesheet" href="../frontend/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../frontend/css/Mycss.css">
+    <link rel="stylesheet" href="../frontend/css/mycss.css">
     <script src="../frontend/js/popper.min.js"></script>
     <script src="../frontend/js/jquery-3.2.1.slim.min.js"></script>
     <script src="../frontend/js/bootstrap.min.js"></script>
     <script src="../frontend/js/noteAppJs.js"></script>
 </head>
-<body>
+<body class="container-fluid bg" style="background-image: url('../frontend/img/background.jpg')">
 <div class="container">
     <%--    row--%>
     <div class="row">
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
         <c:if test="${requestScope.NewNote==null}">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <form method="post" id="my-form" onsubmit="return isValidForm()">
-                    <h3>Thêm mới ghi chú</h3>
+                    <h3  class="d-flex justify-content-center mr-5">Thêm mới ghi chú</h3>
                     <div class="form-group">
                         <label>Tiêu Đề</label>
                         <input type="text" class="form-control" name="title" id="titleCheck" placeholder="Tiêu Đề">
@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <label>Nội Dung</label>
-                        <textarea class="form-control" name="content" placeholder="Nội Dung" rows="4" cols="50"
+                        <textarea class="form-control" name="content" placeholder="Nội Dung" rows="10" cols="50"
                                   style="resize: none"></textarea>
                     </div>
                     <select id="selectCustom" class="input-group custom-select" name="selectType">
@@ -44,9 +44,9 @@
             </div>
         </c:if>
         <c:if test="${requestScope.NewNote!=null}">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <form method="post">
-                    <h3>Sửa ghi chú</h3>
+                    <h3  class="d-flex justify-content-center mr-5">Sửa ghi chú</h3>
                     <div class="form-group">
                         <label style="font-weight: bold">Tiêu Đề</label>
                         <input type="text" class="form-control" name="title" value="${requestScope.NewNote.title}">
@@ -73,7 +73,7 @@
                 </form>
             </div>
         </c:if>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
 
     </div>
     <%--    row--%>
