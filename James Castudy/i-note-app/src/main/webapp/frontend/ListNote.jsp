@@ -46,7 +46,7 @@
                 </div>
             </form>
             <c:if test="${requestScope.Error!=null}">
-                <h3 style="color: red">Không có giá trị cần tìm !!!!!</h3>
+                <h6 style="color: red">Không có giá trị cần tìm !!!!!</h6>
             </c:if>
             <table class="table">
                 <thead>
