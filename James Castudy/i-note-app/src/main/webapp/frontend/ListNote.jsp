@@ -54,7 +54,7 @@
                     <th scope="col"><a href="#">STT</a></th>
                     <th scope="col"><a href="#">Tiêu Đề</a></th>
                     <th scope="col"><a href="#">Phân Loại</a></th>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
