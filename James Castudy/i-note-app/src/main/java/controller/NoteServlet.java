@@ -19,6 +19,7 @@ public class NoteServlet extends javax.servlet.http.HttpServlet {
     private NoteDao noteDao = new NoteDaoImpl();
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        request.setAttribute("Error",null);
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -44,6 +45,7 @@ public class NoteServlet extends javax.servlet.http.HttpServlet {
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        request.setAttribute("Error",null);
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
@@ -94,7 +96,10 @@ public class NoteServlet extends javax.servlet.http.HttpServlet {
             }
         }
         request.setAttribute("ListNote",noteList1);
-        if (noteList1.size()==0) {request.setAttribute("ListNote",noteList);}
+        if (noteList1.size()==0) {
+            request.setAttribute("ListNote",noteList);
+            request.setAttribute("Error","NotFound!!");
+        }
         List<Type> typeList = this.noteDao.getListType();
         request.setAttribute("ListType",typeList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/ListNote.jsp");

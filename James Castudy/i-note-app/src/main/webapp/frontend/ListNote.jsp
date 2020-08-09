@@ -29,10 +29,10 @@
                     <select class="input-group custom-select" id="selectCustom" onchange="sendRequest()">
                         <option selected>Thể Loại</option>
                         <c:forEach items="${requestScope.ListType}" var="type">
-                            <c:if test="${requestScope.SelectType.equals(type.id)}">
+                            <c:if test="${requestScope.SelectType==type.id}">
                                 <option value="${type.id}" selected>${type.name}</option>
                             </c:if>
-                            <c:if test="${!requestScope.SelectType.equals(type.id)}">
+                            <c:if test="${requestScope.SelectType!=type.id}">
                                 <option value="${type.id}">${type.name}</option>
                             </c:if>
                         </c:forEach>
@@ -45,6 +45,9 @@
                     </form>
                 </div>
             </form>
+            <c:if test="${requestScope.Error!=null}">
+                <h3 style="color: red">Không có giá trị cần tìm !!!!!</h3>
+            </c:if>
             <table class="table">
                 <thead>
                 <tr>
