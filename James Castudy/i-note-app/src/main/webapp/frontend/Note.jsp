@@ -23,6 +23,7 @@
         <div class="d-flex justify-content-center">
             <a href="/ListNote?action=edit&id=${requestScope.ViewNote.id}" class="btn btn-primary ml-3"> Sửa</a>
             <a href="/ListNote?action=delete&id=${requestScope.ViewNote.id}" class="btn btn-primary ml-3"> Xóa</a>
+            <a href="/ListNote" class="btn btn-primary ml-3"> Hủy</a>
         </div>
     </div>
 </div>

@@ -94,6 +94,7 @@ public class NoteServlet extends javax.servlet.http.HttpServlet {
             }
         }
         request.setAttribute("ListNote",noteList1);
+        if (noteList1.size()==0) {request.setAttribute("ListNote",noteList);}
         List<Type> typeList = this.noteDao.getListType();
         request.setAttribute("ListType",typeList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/ListNote.jsp");
