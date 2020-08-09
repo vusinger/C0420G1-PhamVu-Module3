@@ -5,13 +5,13 @@
 <head>
     <title>ListNote</title>
     <link rel="stylesheet" href="../frontend/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../frontend/css/Mycss.css">
+    <link rel="stylesheet" href="../frontend/css/mycss.css">
     <script src="../frontend/js/popper.min.js"></script>
     <script src="../frontend/js/jquery-3.2.1.slim.min.js"></script>
     <script src="../frontend/js/bootstrap.min.js"></script>
     <script src="../frontend/js/noteAppJs.js"></script>
 </head>
-<body>
+<body style="background-image: url('../frontend/img/v2osk-1Z2niiBPg5A-unsplash.jpg');">
 <br><br>
 <div class="container">
     <%--    row--%>
@@ -46,7 +46,7 @@
                 </div>
             </form>
             <c:if test="${requestScope.Error!=null}">
-                <h3 style="color: red">Không có giá trị cần tìm !!!!!</h3>
+                <h6 style="color: red">Không có giá trị cần tìm !!!!!</h6>
             </c:if>
             <table class="table">
                 <thead>
