@@ -27,7 +27,7 @@
                 </div>
                 <div class="input-group mb-2 mr-sm-2 ml-3">
                     <select class="input-group custom-select" id="selectCustom" onchange="sendRequest()">
-                        <option selected>Thể Loại</option>
+                        <option value="0" selected>Thể Loại</option>
                         <c:forEach items="${requestScope.ListType}" var="type">
                             <c:if test="${requestScope.SelectType==type.id}">
                                 <option value="${type.id}" selected>${type.name}</option>

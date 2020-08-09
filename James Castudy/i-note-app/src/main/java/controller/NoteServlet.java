@@ -111,7 +111,7 @@ public class NoteServlet extends javax.servlet.http.HttpServlet {
         List<Note> noteList = this.noteDao.getList();
         List<Note> noteList1 = new ArrayList<>();
         for(Note note : noteList) {
-            if (selectTypeId.equals(String.valueOf(note.getTypeId()))) {
+            if (selectTypeId.equals(String.valueOf(note.getTypeId()))||selectTypeId.equals("0")) {
                 noteList1.add(note);
             }
         }
