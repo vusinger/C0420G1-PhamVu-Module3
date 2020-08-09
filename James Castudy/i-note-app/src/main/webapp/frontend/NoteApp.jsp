@@ -30,7 +30,7 @@
                         <textarea class="form-control" name="content" placeholder="Nội Dung" rows="4" cols="50"
                                   style="resize: none"></textarea>
                     </div>
-                    <select class="input-group custom-select" name="selectType">
+                    <select id="selectCustom" class="input-group custom-select" name="selectType">
                         <option selected>Thể Loại</option>
                         <c:forEach items="${requestScope.ListType}" var="type">
                             <option value="${type.id}">${type.name}</option>
