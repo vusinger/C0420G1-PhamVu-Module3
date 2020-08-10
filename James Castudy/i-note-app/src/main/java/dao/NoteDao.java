@@ -6,6 +6,7 @@ import model.Type;
 import java.util.List;
 
 public interface NoteDao {
+
     void insert(Note note);
 
     void update(Note note);
