@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>AddNewEmployee</title>
+    <title>ViewEmployee</title>
     <link rel="stylesheet" href="../frontend/bootstrap/bootstrap.min.css">
     <script src="../frontend/bootstrap/jquery-3.2.1.slim.min.js"></script>
     <script src="../frontend/bootstrap/popper.min.js"></script>

@@ -1,6 +1,7 @@
 package dao;
 
 import model.Customer;
+import model.Employee;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,10 +12,12 @@ import java.util.List;
 public class CustomerDaoImpl implements CustomerDao<Customer> {
 
     private final String SELECT_KHACHHANG = "select * from KhachHang";
+    private final String SELECT_KHACHHANGID = "select * from KhachHang where IdKhachHang = ?";
     private final String INSERT_KHACHHANG = "insert into KhachHang(HoTen,NgaySinh,GioiTinh,SoCMND,SDT,Email,DiaChi," +
             "flag,IdLoaiKhach) value (?,?,?,?,?,?,?,?,?)";
     private final String UPDATE_KHACHHANG = "update KhachHang set HoTen = ? , NgaySinh = ? , GioiTinh = ? , SoCMND = ? , SDT = ? , " +
             "Email = ? , DiaChi = ? , flag = ? , IdLoaiKhach = ? where IdKHachHang = ?";
+    private GetAttachInfo getAttachInfo = new GetAttachInfo();
 
     @Override
     public List<Customer> getListAll() {
@@ -80,5 +83,31 @@ public class CustomerDaoImpl implements CustomerDao<Customer> {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public Customer getCustomerById(String id) {
+        try {
+            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_KHACHHANGID);
+            preparedStatement.setInt(1, Integer.parseInt(id));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            Customer customer = new Customer();
+            customer.setId(resultSet.getInt(1));
+            customer.setName(resultSet.getString(2));
+            customer.setBirthDay(resultSet.getString(3));
+            customer.setGender(resultSet.getString(4));
+            customer.setIdCard(resultSet.getString(5));
+            customer.setPhoneNumber(resultSet.getString(6));
+            customer.setEmail(resultSet.getString(7));
+            customer.setAddress(resultSet.getString(8));
+            customer.setFlag(resultSet.getBoolean(9));
+            customer.setIdCustomerType(resultSet.getInt(10));
+            customer.setNameCustomerType(getAttachInfo.loaikhach.get(resultSet.getInt(10)));
+            return customer;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 }

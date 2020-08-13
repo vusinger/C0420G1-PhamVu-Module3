@@ -4,7 +4,6 @@ import dao.EmployeeDaoImpl;
 import dao.GetAttachInfo;
 import model.Employee;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,67 +11,27 @@ public class EmployeeBoImpl implements EmployeeBo {
 
     private EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
     private GetAttachInfo getAttachInfo = new GetAttachInfo();
-//    static int paging = 0;
-    static int pageCount = 0;
-    static int pageSearch = 0;
-    private List<Employee> employeeList = employeeDaoImpl.getListAll();
+    static int pageCount;
+    static int pageSearch;
 
     @Override
     public Employee getEmployeeById(String id) {
-        for (Employee employee : employeeList) {
-            if (employee.getId() == Integer.parseInt(id)) {
-                return employee;
-            }
-        }
-        return null;
+        return employeeDaoImpl.getEmployeeById(id);
     }
 
-//    @Override
-//    public List<Employee> paging(String search, String next) {
-//        List<Employee> employeeList = this.employeeList;
-//        if (search != null) {
-//            List<Employee> employeeSearchList = new ArrayList<>();
-//            for (Employee employee : employeeList) {
-//                if (employee.getName().toLowerCase().contains(search.toLowerCase().trim())) {
-//                    employeeSearchList.add(employee);
-//                }
-//            }
-//            employeeList = employeeSearchList;
-//        }
-//        if (next == null) {
-//            paging = 0;
-//            next = "false";
-//        }
-//        if (next != null) {
-//            if (next.equals("true") && ((paging + 1) * 10 < employeeList.size())) {
-//                ++paging;
-//            } else if (next.equals("false") && (paging > 0)) {
-//                --paging;
-//            }
-//            List<Employee> paginListEmployee = new ArrayList<>();
-//            int index = 0;
-//            for (Employee employee : employeeList) {
-//                ++index;
-//                if (index > paging * 10) {
-//                    paginListEmployee.add(employee);
-//                }
-//                if (index >= (paging + 1) * 10) break;
-//            }
-//            return paginListEmployee;
-//        }
-//        return employeeList;
-//    }
+    @Override
+    public Employee getEmployeeById(int id) {
+        return employeeDaoImpl.getEmployeeById(String.valueOf(id));
+    }
 
     @Override
     public void updateEmployee(Employee employee) {
         employeeDaoImpl.update(employee);
-        this.employeeList = employeeDaoImpl.getListAll();
     }
 
     @Override
     public void insertNewEmployee(Employee employee) {
         employeeDaoImpl.insert(employee);
-        this.employeeList = employeeDaoImpl.getListAll();
     }
 
     @Override

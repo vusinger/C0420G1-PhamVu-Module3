@@ -8,6 +8,7 @@ public interface EmployeeDao<E> {
     List<E> getListAll();
     void insert(E employee);
     void update(E employee);
-    List<Employee> getListNext(int pageCount);
-    List<Employee> getListSearchNext(int pageSearch, String search);
+    List<E> getListNext(int pageCount);
+    List<E> getListSearchNext(int pageSearch, String search);
+    E getEmployeeById(String id);
 }

@@ -2,21 +2,11 @@ package model;
 
 import java.io.Serializable;
 
-public class AccompaniedService implements Serializable {
+public class AccompaniedService {
 
-    private static final long serialVersionUID = 1L;
     private String name;
     private int unit;
     private double price;
-
-    public AccompaniedService() {
-    }
-
-    public AccompaniedService(String name, int unit, double price) {
-        this.name = name;
-        this.unit = unit;
-        this.price = price;
-    }
 
     public String getName() {
         return name;

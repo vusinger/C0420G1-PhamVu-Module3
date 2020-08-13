@@ -1,7 +1,9 @@
 package bo;
 
+import dao.ContractorDaoImpl;
 import dao.CustomerDaoImpl;
 import dao.GetAttachInfo;
+import model.Contractor;
 import model.Customer;
 
 import java.util.ArrayList;
@@ -13,17 +15,20 @@ public class CustomerBoImpl implements CustomerBo{
     private CustomerDaoImpl customerDaoImpl = new CustomerDaoImpl();
     private GetAttachInfo getAttachInfo = new GetAttachInfo();
     static int pagein = 0;
+    static int pageCount = 0;
+    static int pageSearch = 0;
     List<Customer> customerList = customerDaoImpl.getListAll();
 
 
     @Override
     public Customer getCustomerById(String id) {
-        for (Customer customer : customerList) {
-            if (customer.getId() == Integer.parseInt(id)) {
-                return  customer;
-            }
-        }
-        return null;
+        return customerDaoImpl.getCustomerById(id);
+
+    }
+
+    @Override
+    public Customer getCustomerById(int id) {
+        return customerDaoImpl.getCustomerById(String.valueOf(id));
     }
 
     @Override

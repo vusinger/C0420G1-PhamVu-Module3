@@ -2,27 +2,19 @@ package model;
 
 import java.io.Serializable;
 
-public abstract class Services implements Serializable {
-    private static final long serialVersionUID =
-            1L;
+public class Services {
+
     private int id;
     private String codeService;
     private String serviceName;
     private double useArea;
+    private double numberFloor;
     private double rentalCost;
     private int maximumPerson;
-    private int inputRentType;
-    private final String[] rentTypeArray = {"HourlyRent", "DailyRent", "MonthlyRent", "YearlyRent"};
-    private String rentType;
-    private AccompaniedService accompaniedService;
-
-    public String getCodeService() {
-        return codeService;
-    }
-
-    public void setCodeService(String codeService) {
-        this.codeService = codeService;
-    }
+    private String serviceStatus;
+    private boolean flag;
+    private int idKieuThue;
+    private int idLoaiDichVu;
 
     public int getId() {
         return id;
@@ -30,6 +22,14 @@ public abstract class Services implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCodeService() {
+        return codeService;
+    }
+
+    public void setCodeService(String codeService) {
+        this.codeService = codeService;
     }
 
     public String getServiceName() {
@@ -48,6 +48,14 @@ public abstract class Services implements Serializable {
         this.useArea = useArea;
     }
 
+    public double getNumberFloor() {
+        return numberFloor;
+    }
+
+    public void setNumberFloor(double numberFloor) {
+        this.numberFloor = numberFloor;
+    }
+
     public double getRentalCost() {
         return rentalCost;
     }
@@ -64,26 +72,35 @@ public abstract class Services implements Serializable {
         this.maximumPerson = maximumPerson;
     }
 
-    public String getRentType() {
-        return rentType;
+    public String getServiceStatus() {
+        return serviceStatus;
     }
 
-    public void setInputRentType(int inputRentType) {
-        this.inputRentType = inputRentType;
-        if (this.inputRentType > 0 && this.inputRentType < 4) {
-            this.rentType = this.rentTypeArray[this.inputRentType - 1];
-        } else this.rentType = "";
+    public void setServiceStatus(String serviceStatus) {
+        this.serviceStatus = serviceStatus;
     }
 
-    public AccompaniedService getAccompaniedService() {
-        return accompaniedService;
+    public boolean isFlag() {
+        return flag;
     }
 
-    public void setAccompaniedService(AccompaniedService accompaniedService) {
-        this.accompaniedService = accompaniedService;
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 
-    public Services() {
+    public int getIdKieuThue() {
+        return idKieuThue;
     }
-    public abstract void showInfo();
+
+    public void setIdKieuThue(int idKieuThue) {
+        this.idKieuThue = idKieuThue;
+    }
+
+    public int getIdLoaiDichVu() {
+        return idLoaiDichVu;
+    }
+
+    public void setIdLoaiDichVu(int idLoaiDichVu) {
+        this.idLoaiDichVu = idLoaiDichVu;
+    }
 }

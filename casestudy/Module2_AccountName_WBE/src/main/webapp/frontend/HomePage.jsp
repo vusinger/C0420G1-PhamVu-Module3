@@ -43,8 +43,8 @@
                                 <a class="dropdown-item" href="/HomePage?action=AddCustomer">Thêm mới khách hàng</a>
                                 <a class="dropdown-item" href="/HomePage?action=ListCustomer">Hiển thị danh sách khách
                                     hàng</a>
-                                <a class="dropdown-item" href="/HomePage?action=ListCustomer">Hiển thị danh sách khách
-                                    hàng đang sử dụng dịc vụ</a>
+                                <a class="dropdown-item" href="/HomePage?action=ListCustomerUseService">Hiển thị danh sách khách
+                                    hàng đang sử dụng dịch vụ</a>
                             </div>
                         </li>
                         <li class="nav-item ml-5">

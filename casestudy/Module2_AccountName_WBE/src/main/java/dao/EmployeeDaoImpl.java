@@ -1,5 +1,6 @@
 package dao;
 
+import model.Contractor;
 import model.Employee;
 
 import java.sql.PreparedStatement;
@@ -11,6 +12,7 @@ import java.util.List;
 public class EmployeeDaoImpl implements EmployeeDao<Employee> {
 
     private final String SELECT_NHANVIEN = "select * from NhanVien";
+    private final String SELECT_NHANVIENID = "select * from NhanVien where IdNhanVien = ?";
     private final String INSERT_NHANVIEN = "insert into NhanVien(HoTen,NgaySinh,SoCMND," +
                         "GioiTinh,Luong,SDT,Email,DiaChi,flag,IdViTri,IdTrinhDo,IdBoPhan) value (?,?,?,?,?,?,?,?,?,?,?,?)";
     private final String UPDATE_NHANVIEN = "update NhanVien set HoTen = ? ,NgaySinh = ? ,SoCMND = ? ,GioiTinh = ? ," +
@@ -177,5 +179,36 @@ public class EmployeeDaoImpl implements EmployeeDao<Employee> {
             throwables.printStackTrace();
         }
         return employeeList;
+    }
+
+    @Override
+    public Employee getEmployeeById(String id) {
+        try {
+            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIENID);
+            preparedStatement.setInt(1, Integer.parseInt(id));
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            Employee employee = new Employee();
+            employee.setId(resultSet.getInt(1));
+            employee.setName(resultSet.getString(2));
+            employee.setBirthDay(resultSet.getString(3));
+            employee.setIdCard(resultSet.getString(4));
+            employee.setGender(resultSet.getString(5));
+            employee.setSalary(resultSet.getString(6));
+            employee.setPhoneNumber(resultSet.getString(7));
+            employee.setEmail(resultSet.getString(8));
+            employee.setAddress(resultSet.getString(9));
+            employee.setFlag(resultSet.getBoolean(10));
+            employee.setIdPosition(resultSet.getInt(11));
+            employee.setNamePosition(getAttachInfo.vitri.get(resultSet.getInt(11)));
+            employee.setIdLevel(resultSet.getInt(12));
+            employee.setNameLevel(getAttachInfo.trinhdo.get(resultSet.getInt(12)));
+            employee.setIdDepartment(resultSet.getInt(13));
+            employee.setNameDepartment(getAttachInfo.bophan.get(resultSet.getInt(13)));
+            return employee;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
     }
 }

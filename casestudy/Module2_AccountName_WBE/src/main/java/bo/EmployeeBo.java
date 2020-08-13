@@ -8,7 +8,7 @@ import java.util.Map;
 public interface EmployeeBo {
     Employee getEmployeeById(String id);
 
-//    List<Employee> paging(String search, String next);
+    Employee getEmployeeById(int id);
 
     void updateEmployee(Employee employee);
 

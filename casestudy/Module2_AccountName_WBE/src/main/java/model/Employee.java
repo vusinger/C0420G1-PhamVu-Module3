@@ -1,8 +1,6 @@
 package model;
 
-import java.io.*;
-
-public class Employee implements Serializable {
+public class Employee {
 
     private int id;
     private String name;

@@ -2,7 +2,7 @@ package model;
 
 import java.io.*;
 
-public class Customer implements Serializable {
+public class Customer {
 
     private int id;
     private String name;
@@ -14,6 +14,7 @@ public class Customer implements Serializable {
     private String address;
     private boolean flag = true;
     private int idCustomerType;
+    private String nameCustomerType;
 
     public int getId() {
         return id;
@@ -93,5 +94,13 @@ public class Customer implements Serializable {
 
     public void setIdCustomerType(int idCustomerType) {
         this.idCustomerType = idCustomerType;
+    }
+
+    public String getNameCustomerType() {
+        return nameCustomerType;
+    }
+
+    public void setNameCustomerType(String nameCustomerType) {
+        this.nameCustomerType = nameCustomerType;
     }
 }

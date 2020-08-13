@@ -1,7 +1,9 @@
 package controller;
 
+import bo.ContractorBoImpl;
 import bo.CustomerBoImpl;
-import dao.GetAttachInfo;
+import bo.EmployeeBoImpl;
+import model.Contractor;
 import model.Customer;
 
 import javax.servlet.RequestDispatcher;
@@ -13,10 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeServlet", urlPatterns = "/HomePage")
+@WebServlet(name = "HomeServlet",urlPatterns = "/HomePage")
 public class HomeServlet extends HttpServlet {
 
     private CustomerBoImpl customerBoImpl = new CustomerBoImpl();
+    private ContractorBoImpl contractorBoImpl = new ContractorBoImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -46,8 +49,12 @@ public class HomeServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         String search = request.getParameter("search");
+        String searchListCustomerUseService = request.getParameter("searchListCustomerUseService");
         if (search!=null) {
             action = "ListCustomer";
+        }
+        if (searchListCustomerUseService!=null) {
+            action = "ListCustomerUseService";
         }
         if (action == null) {
             action = "";
@@ -62,6 +69,9 @@ public class HomeServlet extends HttpServlet {
                     break;
                 case "ListCustomer":
                     showListCustomer(request, response);
+                    break;
+                case "ListCustomerUseService":
+                    showListCustomerUseService(request, response);
                     break;
                 case "EditCustomer":
                     showEditCustomer(request, response);
@@ -101,6 +111,16 @@ public class HomeServlet extends HttpServlet {
         request.setAttribute("Search",request.getParameter("search"));
         request.setAttribute("ListCustomer", customerList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/customer/ListCustomer.jsp");
+        requestDispatcher.forward(request, response);
+    }
+
+    private void showListCustomerUseService(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String next = request.getParameter("next");
+        String search = request.getParameter("searchListCustomerUseService");
+        List<Contractor> contractorList = contractorBoImpl.getListUserUsingService(search,next);
+        request.setAttribute("Search",request.getParameter("searchListCustomerUseService"));
+        request.setAttribute("ListContractor", contractorList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/customer/ListCustomerUseService.jsp");
         requestDispatcher.forward(request, response);
     }
 
