@@ -57,10 +57,8 @@ public class ContractorBoImpl implements ContractorBo {
         if (next == null) pageCount = 0;
         if ("".equals(search) || search == null) {
             getNextList(next);
-            recheckContractorList();
         } else {
             getNextSearch(search, next);
-            recheckContractorList();
         }
         return contractorList;
     }
@@ -80,6 +78,7 @@ public class ContractorBoImpl implements ContractorBo {
         if ("true".equals(next)) pageSearch++; else if ("false".equals(next)) pageSearch--;
         if (pageSearch<0) {
             pageSearch = 0;
+            return;
         }
         /*getListCustomerUsingServiceSearch*/
         if (maxPage>0&&pageSearch>maxPage){
@@ -93,6 +92,7 @@ public class ContractorBoImpl implements ContractorBo {
             /*getListCustomerUsingServiceSearch*/
             contractorList = contractorDaoImpl.getLCUSSearch(pageSearch,search);
         }
+        recheckContractorList();
     }
 
     private void getNextList(String next) {
@@ -113,5 +113,6 @@ public class ContractorBoImpl implements ContractorBo {
             /*getListCustomerUsingService*/
             contractorList = contractorDaoImpl.getLCUSNext(pageCount);
         }
+        recheckContractorList();
     }
 }
