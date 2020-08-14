@@ -5,8 +5,14 @@ import model.Customer;
 import java.util.List;
 
 public interface CustomerDao<E> {
-    List<E> getListAll();
+
     void insert(E customer);
+
     void update(E customer);
+
+    List<Customer> getListNext(int pageCount);
+
+    List<Customer> getListSearchNext(int pageSearch, String search);
+
     Customer getCustomerById(String id);
 }

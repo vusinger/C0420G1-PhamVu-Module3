@@ -16,12 +16,13 @@ public class ServicesDaoImpl implements ServicesDao<Services> {
             "SoNguoiToiDa,TrangThai,flag,IdKieuThue,IdloaiDichVu) value (?,?,?,?,?,?,?,?)";
     private final String UPDATE_DICHVU = "update DichVu set TenDichVu = ? ,DienTich = ? ,SoTang = ? ,SoNguoiToiDa = ? ," +
             "ChiPhiThue = ? , TrangThai = ? ,flag = ?,IdKieuThue = ? ,IdloaiDichVu = ? where IdDichVu = ? ";
-    private GetAttachInfo getAttachInfo = new GetAttachInfo();
 
     @Override
     public void insert(Services services) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(INSERT_DICHVU);
+            preparedStatement = BaseDao.getConnection().prepareStatement(INSERT_DICHVU);
             preparedStatement.setString(1, services.getServiceName());
             preparedStatement.setDouble(2, services.getUseArea());
             preparedStatement.setDouble(3, services.getNumberFloor());
@@ -39,8 +40,10 @@ public class ServicesDaoImpl implements ServicesDao<Services> {
 
     @Override
     public void update(Services services) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(UPDATE_DICHVU);
+            preparedStatement = BaseDao.getConnection().prepareStatement(UPDATE_DICHVU);
             preparedStatement.setString(1, services.getServiceName());
             preparedStatement.setDouble(2, services.getUseArea());
             preparedStatement.setDouble(3, services.getNumberFloor());
@@ -59,10 +62,12 @@ public class ServicesDaoImpl implements ServicesDao<Services> {
 
     @Override
     public List<Services> getListNext(int pageCount) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         List<Services> serviceList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_DICHVU);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_DICHVU);
+            resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()) {
                 count++;
@@ -93,10 +98,12 @@ public class ServicesDaoImpl implements ServicesDao<Services> {
 
     @Override
     public List<Services> getListSearchNext(int pageSearch,String search) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         List<Services> serviceList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_DICHVU);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_DICHVU);
+            resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()) {
                 count++;
@@ -129,12 +136,14 @@ public class ServicesDaoImpl implements ServicesDao<Services> {
 
     @Override
     public Services getServicesById(String id) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
+        Services services = new Services();
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_DICHVUID);
+            preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_DICHVUID);
             preparedStatement.setInt(1, Integer.parseInt(id));
-            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            Services services = new Services();
             services.setId(resultSet.getInt(1));
             services.setServiceName(resultSet.getString(2));
             services.setUseArea(resultSet.getDouble(3));
@@ -145,10 +154,9 @@ public class ServicesDaoImpl implements ServicesDao<Services> {
             services.setFlag(resultSet.getBoolean(8));
             services.setIdKieuThue(resultSet.getInt(9));
             services.setIdLoaiDichVu(resultSet.getInt(10));
-            return services;
-        } catch (SQLException throwables) {
+        } catch (Exception throwables) {
             throwables.printStackTrace();
         }
-        return null;
+        return services;
     }
 }

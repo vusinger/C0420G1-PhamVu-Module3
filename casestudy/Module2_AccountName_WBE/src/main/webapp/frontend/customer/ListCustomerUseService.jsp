@@ -18,11 +18,12 @@
     <%--content--%>
     <div class="row">
         <div class="col-12">
-            <h1 class="d-flex justify-content-center text-info mr-5">Danh Sách Khách Hàng</h1>
+            <h1 class="d-flex justify-content-center text-info mr-5">Danh Sách Khách Hàng Đang Sử Dụng Dịch Vụ</h1>
             <br>
             <form class="form-inline">
                 <label class="sr-only">Name</label>
-                <input name="searchListCustomerUseService" type="text" class="form-control mb-2 mr-sm-2 w-75 ml-3" placeholder="Search..."
+                <input name="searchListCustomerUseService" type="text" class="form-control mb-2 mr-sm-2 w-75 ml-3"
+                       placeholder="Search..."
                        value="${requestScope.Search}">
                 <button type="submit" class="btn btn-primary mb-2 ml-3">Search</button>
             </form>
@@ -52,11 +53,11 @@
             </table>
             <nav aria-label="Page navigation example">
                 <ul class="pagination d-flex justify-content-center">
-                    <li class="page-item"><a class="page-link"
-                                             href="/HomePage?action=ListCustomerUseService&next=false&searchListCustomerUseService=${requestScope.Search}">Previous</a>
+                    <li class="page-item">
+                        <a class="page-link" href="/HomePage?action=ListCustomerUseService&next=false&searchListCustomerUseService=${requestScope.Search}">Previous</a>
                     </li>
-                    <li class="page-item"><a class="page-link ml-3"
-                                             href="/HomePage?action=ListCustomerUseService&next=true&searchListCustomerUseService=${requestScope.Search}">&nbsp;&nbsp;&nbsp;Next&nbsp;&nbsp;&nbsp;</a>
+                    <li class="page-item">
+                        <a class="page-link ml-3" href="/HomePage?action=ListCustomerUseService&next=true&searchListCustomerUseService=${requestScope.Search}">Next</a>
                     </li>
                 </ul>
             </nav>

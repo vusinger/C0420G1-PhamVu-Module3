@@ -7,11 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GetAttachInfo {
-    public Map<Integer,String> vitri = new HashMap<>();
-    public Map<Integer,String> trinhdo = new HashMap<>();
-    public Map<Integer,String> bophan = new HashMap<>();
-    public Map<Integer,String> loaikhach = new HashMap<>();
-    public Map<Integer,String> kieuthue = new HashMap<>();
+    public static Map<Integer,String> vitri = new HashMap<>();
+    public static Map<Integer,String> trinhdo = new HashMap<>();
+    public static Map<Integer,String> bophan = new HashMap<>();
+    public static Map<Integer,String> loaikhach = new HashMap<>();
+    public static Map<Integer,String> kieuthue = new HashMap<>();
     static String SELECT_VITRI = "select * from ViTri";
     static String SELECT_TRINHDO = "select * from TrinhDo";
     static String SELECT_BOPHAN = "select * from BoPhan";

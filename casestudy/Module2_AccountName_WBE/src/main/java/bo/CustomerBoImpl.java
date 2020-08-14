@@ -1,12 +1,9 @@
 package bo;
 
-import dao.ContractorDaoImpl;
 import dao.CustomerDaoImpl;
 import dao.GetAttachInfo;
-import model.Contractor;
 import model.Customer;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,10 +11,8 @@ public class CustomerBoImpl implements CustomerBo{
 
     private CustomerDaoImpl customerDaoImpl = new CustomerDaoImpl();
     private GetAttachInfo getAttachInfo = new GetAttachInfo();
-    static int pagein = 0;
     static int pageCount = 0;
     static int pageSearch = 0;
-    List<Customer> customerList = customerDaoImpl.getListAll();
 
 
     @Override
@@ -32,42 +27,6 @@ public class CustomerBoImpl implements CustomerBo{
     }
 
     @Override
-    public List<Customer> paging(String search, String next) {
-        List<Customer> customerList = this.customerList;
-        if (search!=null) {
-            List<Customer> customerSearchList = new ArrayList<>();
-            for (Customer customer: customerList) {
-                if (customer.getName().toLowerCase().contains(search.toLowerCase().trim())) {
-                    customerSearchList.add(customer);
-                }
-            }
-            customerList = customerSearchList;
-        }
-        if (next==null) {
-            pagein = 0;
-            next = "false";
-        }
-        if (next!=null) {
-            if (next.equals("true") && ((pagein+1) * 10 < customerList.size())) {
-                ++pagein;
-            } else if (next.equals("false") && (pagein > 0)) {
-                --pagein;
-            }
-            List<Customer> paginListCustomer = new ArrayList<>();
-            int index = 0;
-            for (Customer customer : customerList) {
-                ++index;
-                if (index > pagein * 10) {
-                    paginListCustomer.add(customer);
-                }
-                if (index >= (pagein + 1) * 10) break;
-            }
-            return paginListCustomer;
-        }
-        return customerList;
-    }
-
-    @Override
     public Map<Integer,String> getListCustomerType() {
         return getAttachInfo.loaikhach;
     }
@@ -75,12 +34,49 @@ public class CustomerBoImpl implements CustomerBo{
     @Override
     public void updateCustomer(Customer customer) {
         customerDaoImpl.update(customer);
-        this.customerList = customerDaoImpl.getListAll();
+    }
+
+    @Override
+    public void deleteCustomer(Customer customer) {
+        customer.setFlag(false);
+        customerDaoImpl.update(customer);
     }
 
     @Override
     public void insertNewCustomer(Customer customer) {
         customerDaoImpl.insert(customer);
-        this.customerList = customerDaoImpl.getListAll();
+    }
+
+    @Override
+    public List<Customer> getPaging(String search, String next) {
+        if (search == null) pageSearch = 0;
+        if (next == null) pageCount = 0;
+        if ("".equals(search) || search == null) {
+            return getNextList(next);
+        } else {
+            return getNextSearch(search, next);
+        }
+    }
+
+    private List<Customer> getNextSearch(String search, String next) {
+        if ("true".equals(next)) pageSearch++; else if ("false".equals(next)) pageSearch--;
+        if (pageSearch<0) pageSearch = 0;
+        List<Customer> customerList = customerDaoImpl.getListSearchNext(pageSearch,search);
+        if (customerList.size()==0) {
+            pageSearch--;
+            return customerDaoImpl.getListSearchNext(pageSearch-1,search);
+        }
+        return customerList;
+    }
+
+    private List<Customer> getNextList(String next) {
+        if ("true".equals(next)) pageCount++; else if ("false".equals(next)) pageCount--;
+        if (pageCount<0) pageCount = 0;
+        List<Customer> customerList = customerDaoImpl.getListNext(pageCount);
+        if (customerList.size()==0) {
+            pageCount--;
+            return customerDaoImpl.getListNext(pageCount);
+        }
+        return customerList;
     }
 }

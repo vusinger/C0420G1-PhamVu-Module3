@@ -19,45 +19,12 @@ public class EmployeeDaoImpl implements EmployeeDao<Employee> {
                         "Luong = ? ,SDT = ?,Email = ? ,DiaChi = ?,flag = ? , IdViTri = ? , IdTrinhDo = ? , IdBoPhan = ? where IdNhanVien = ? ";
     private GetAttachInfo getAttachInfo = new GetAttachInfo();
 
-
-    @Override
-    public List<Employee> getListAll() {
-        List<Employee> employeeList = new ArrayList<>();
-        try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIEN);
-            ResultSet resultSet1 = preparedStatement.executeQuery();
-            while (resultSet1.next()) {
-                Employee employee = new Employee();
-                employee.setId(resultSet1.getInt(1));
-                employee.setName(resultSet1.getString(2));
-                employee.setBirthDay(resultSet1.getString(3));
-                employee.setIdCard(resultSet1.getString(4));
-                employee.setGender(resultSet1.getString(5));
-                employee.setSalary(resultSet1.getString(6));
-                employee.setPhoneNumber(resultSet1.getString(7));
-                employee.setEmail(resultSet1.getString(8));
-                employee.setAddress(resultSet1.getString(9));
-                employee.setFlag(resultSet1.getBoolean(10));
-                employee.setIdPosition(resultSet1.getInt(11));
-                employee.setIdLevel(resultSet1.getInt(12));
-                employee.setIdDepartment(resultSet1.getInt(13));
-                if (employee.isFlag()) {
-                    employee.setNamePosition(getAttachInfo.vitri.get(employee.getIdPosition()));
-                    employee.setNameLevel(getAttachInfo.trinhdo.get(employee.getIdLevel()));
-                    employee.setNameDepartment(getAttachInfo.bophan.get(employee.getIdDepartment()));
-                    employeeList.add(employee);
-                }
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return employeeList;
-    }
-
     @Override
     public void insert(Employee employee) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(INSERT_NHANVIEN);
+            preparedStatement = BaseDao.getConnection().prepareStatement(INSERT_NHANVIEN);
             preparedStatement.setString(1, employee.getName());
             preparedStatement.setString(2, employee.getBirthDay());
             preparedStatement.setString(3, employee.getIdCard());
@@ -78,8 +45,10 @@ public class EmployeeDaoImpl implements EmployeeDao<Employee> {
 
     @Override
     public void update(Employee employee) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(UPDATE_NHANVIEN);
+            preparedStatement = BaseDao.getConnection().prepareStatement(UPDATE_NHANVIEN);
             preparedStatement.setString(1, employee.getName());
             preparedStatement.setString(2, employee.getBirthDay());
             preparedStatement.setString(3, employee.getIdCard());
@@ -101,10 +70,12 @@ public class EmployeeDaoImpl implements EmployeeDao<Employee> {
 
     @Override
     public List<Employee> getListNext(int pageCount) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         List<Employee> employeeList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIEN);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIEN);
+            resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()) {
                 count++;
@@ -141,10 +112,12 @@ public class EmployeeDaoImpl implements EmployeeDao<Employee> {
 
     @Override
     public List<Employee> getListSearchNext(int pageSearch,String search) {
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         List<Employee> employeeList = new ArrayList<>();
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIEN);
-            ResultSet resultSet = preparedStatement.executeQuery();
+            preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIEN);
+            resultSet = preparedStatement.executeQuery();
             int count = 0;
             while (resultSet.next()) {
                 count++;
@@ -183,12 +156,14 @@ public class EmployeeDaoImpl implements EmployeeDao<Employee> {
 
     @Override
     public Employee getEmployeeById(String id) {
+        Employee employee = new Employee();
+        ResultSet resultSet = null;
+        PreparedStatement preparedStatement = null;
         try {
-            PreparedStatement preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIENID);
+            preparedStatement = BaseDao.getConnection().prepareStatement(SELECT_NHANVIENID);
             preparedStatement.setInt(1, Integer.parseInt(id));
-            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            Employee employee = new Employee();
             employee.setId(resultSet.getInt(1));
             employee.setName(resultSet.getString(2));
             employee.setBirthDay(resultSet.getString(3));
@@ -205,10 +180,9 @@ public class EmployeeDaoImpl implements EmployeeDao<Employee> {
             employee.setNameLevel(getAttachInfo.trinhdo.get(resultSet.getInt(12)));
             employee.setIdDepartment(resultSet.getInt(13));
             employee.setNameDepartment(getAttachInfo.bophan.get(resultSet.getInt(13)));
-            return employee;
-        } catch (SQLException throwables) {
+        } catch (Exception throwables) {
             throwables.printStackTrace();
         }
-        return null;
+        return employee;
     }
 }

@@ -4,23 +4,25 @@ import dao.ContractorDaoImpl;
 import dao.GetAttachInfo;
 import model.Contractor;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class ContractorBoImpl implements ContractorBo {
 
     private ContractorDaoImpl contractorDaoImpl = new ContractorDaoImpl();
+    private EmployeeBoImpl employeeBoImpl = new EmployeeBoImpl();
+    private CustomerBoImpl customerBoImpl = new CustomerBoImpl();
+    private ServicesBoImpl servicesBoImpl = new ServicesBoImpl();
     private GetAttachInfo getAttachInfo = new GetAttachInfo();
     static int pageCount;
     static int pageSearch;
+    static int maxPage = -1;
+    static List<Contractor> contractorList = new ArrayList<>();
 
     @Override
     public Contractor getContractorById(String id) {
         Contractor contractor = contractorDaoImpl.getContractorById(id);
-        CustomerBoImpl customerBoImpl = new CustomerBoImpl();
-        EmployeeBoImpl employeeBoImpl = new EmployeeBoImpl();
-        contractor.setNameKhachHang(customerBoImpl.getCustomerById(id).getName());
-        contractor.setNameNhanVien(employeeBoImpl.getEmployeeById(id).getName());
         return contractor;
     }
 
@@ -54,35 +56,62 @@ public class ContractorBoImpl implements ContractorBo {
         if (search == null) pageSearch = 0;
         if (next == null) pageCount = 0;
         if ("".equals(search) || search == null) {
-            return getNextList(next);
+            getNextList(next);
+            recheckContractorList();
         } else {
-            return getNextSearch(search, next);
+            getNextSearch(search, next);
+            recheckContractorList();
+        }
+        return contractorList;
+    }
+
+    private void recheckContractorList() {
+        for (Contractor contractor:contractorList) {
+            String nameKhachHang = customerBoImpl.getCustomerById(contractor.getIdKhachHang()).getName();
+            contractor.setNameKhachHang(nameKhachHang);
+            String nameNhanVien = employeeBoImpl.getEmployeeById(contractor.getIdNhanVien()).getName();
+            contractor.setNameNhanVien(nameNhanVien);
+            String nameDichVu = servicesBoImpl.getServicesById(contractor.getIdDichVu()).getServiceName();
+            contractor.setNameDichVu(nameDichVu);
         }
     }
 
-    private List<Contractor> getNextSearch(String search, String next) {
+    private void getNextSearch(String search, String next) {
         if ("true".equals(next)) pageSearch++; else if ("false".equals(next)) pageSearch--;
-        if (pageSearch<0) pageSearch = 0;
+        if (pageSearch<0) {
+            pageSearch = 0;
+        }
         /*getListCustomerUsingServiceSearch*/
-        List<Contractor> customerList = contractorDaoImpl.getLCUSSearch(pageSearch,search);
-        if (customerList.size()==0) {
+        if (maxPage>0&&pageSearch>maxPage){
+            pageSearch--;
+            return;
+        }
+        contractorList = contractorDaoImpl.getLCUSSearch(pageSearch,search);
+        if (contractorList.size()==0) {
+            maxPage = pageSearch-1;
             pageSearch--;
             /*getListCustomerUsingServiceSearch*/
-            return contractorDaoImpl.getLCUSSearch(pageSearch-1,search);
+            contractorList = contractorDaoImpl.getLCUSSearch(pageSearch,search);
         }
-        return customerList;
     }
 
-    private List<Contractor> getNextList(String next) {
+    private void getNextList(String next) {
         if ("true".equals(next)) pageCount++; else if ("false".equals(next)) pageCount--;
-        if (pageCount<0) pageCount = 0;
+        if (pageCount<0) {
+            pageCount = 0;
+            return;
+        }
         /*getListCustomerUsingService*/
-        List<Contractor> customerList = contractorDaoImpl.getLCUSNext(pageCount);
-        if (customerList.size()==0) {
+        if (maxPage>0&&pageCount>maxPage) {
+            pageCount--;
+            return;
+        }
+        contractorList = contractorDaoImpl.getLCUSNext(pageCount);
+        if (contractorList.size()==0) {
+            maxPage = pageCount-1;
             pageCount--;
             /*getListCustomerUsingService*/
-            return contractorDaoImpl.getLCUSNext(pageCount-1);
+            contractorList = contractorDaoImpl.getLCUSNext(pageCount);
         }
-        return customerList;
     }
 }

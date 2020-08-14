@@ -66,7 +66,7 @@ public class EmployeeBoImpl implements EmployeeBo {
         List<Employee> employeeList = employeeDaoImpl.getListSearchNext(pageSearch,search);
         if (employeeList.size()==0) {
             pageSearch--;
-            return employeeDaoImpl.getListSearchNext(pageSearch-1,search);
+            return employeeDaoImpl.getListSearchNext(pageSearch,search);
         }
         return employeeList;
     }
@@ -77,7 +77,7 @@ public class EmployeeBoImpl implements EmployeeBo {
         List<Employee> employeeList = employeeDaoImpl.getListNext(pageCount);
         if (employeeList.size()==0) {
             pageCount--;
-            return employeeDaoImpl.getListNext(pageCount-1);
+            return employeeDaoImpl.getListNext(pageCount);
         }
         return employeeList;
     }

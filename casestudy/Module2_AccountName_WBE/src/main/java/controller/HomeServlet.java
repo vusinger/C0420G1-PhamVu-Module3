@@ -107,7 +107,7 @@ public class HomeServlet extends HttpServlet {
     private void showListCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String next = request.getParameter("next");
         String search = request.getParameter("search");
-        List<Customer> customerList = customerBoImpl.paging(search,next);
+        List<Customer> customerList = customerBoImpl.getPaging(search,next);
         request.setAttribute("Search",request.getParameter("search"));
         request.setAttribute("ListCustomer", customerList);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("frontend/customer/ListCustomer.jsp");
@@ -165,7 +165,6 @@ public class HomeServlet extends HttpServlet {
     private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
         Customer customer =  customerBoImpl.getCustomerById(id);
-        customer.setFlag(false);
         customerBoImpl.updateCustomer(customer);
         showListCustomer(request, response);
     }

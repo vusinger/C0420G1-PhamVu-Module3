@@ -9,10 +9,10 @@ import java.util.Map;
 
 public class ServicesBoImpl implements ServicesBo {
 
-    private ServicesDaoImpl servicesDaoImpl = new ServicesDaoImpl();
-    private GetAttachInfo getAttachInfo = new GetAttachInfo();
     static int pageCount;
     static int pageSearch;
+    private GetAttachInfo getAttachInfo = new GetAttachInfo();
+    private ServicesDaoImpl servicesDaoImpl = new ServicesDaoImpl();
 
     @Override
     public Services getServicesById(String id) {
@@ -66,7 +66,7 @@ public class ServicesBoImpl implements ServicesBo {
         List<Services> servicesList = servicesDaoImpl.getListSearchNext(pageSearch,search);
         if (servicesList.size()==0) {
             pageSearch--;
-            return servicesDaoImpl.getListSearchNext(pageSearch-1,search);
+            return servicesDaoImpl.getListSearchNext(pageSearch,search);
         }
         return servicesList;
     }
@@ -77,7 +77,7 @@ public class ServicesBoImpl implements ServicesBo {
         List<Services> servicesList = servicesDaoImpl.getListNext(pageCount);
         if (servicesList.size()==0) {
             pageCount--;
-            return servicesDaoImpl.getListNext(pageCount-1);
+            return servicesDaoImpl.getListNext(pageCount);
         }
         return servicesList;
     }

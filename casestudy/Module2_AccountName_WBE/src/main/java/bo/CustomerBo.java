@@ -12,12 +12,13 @@ public interface CustomerBo {
 
     Customer getCustomerById(int id);
 
-    List<Customer> paging(String search, String next);
-
     Map<Integer, String> getListCustomerType();
 
     void updateCustomer(Customer customer);
 
+    void deleteCustomer(Customer customer);
+
     void insertNewCustomer(Customer customer);
 
+    List<Customer> getPaging(String search, String next);
 }

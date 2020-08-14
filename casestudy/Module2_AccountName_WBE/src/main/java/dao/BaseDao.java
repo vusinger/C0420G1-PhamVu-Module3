@@ -9,17 +9,13 @@ public class BaseDao {
     static String jdbcUsername = "root";
     static String jdbcPassword = "1234";
 
-    static Connection getConnection() {
+    static Connection getConnection() throws SQLException {
         Connection connection = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        } catch (Exception e) {
+            return null;
         }
         return connection;
     }
